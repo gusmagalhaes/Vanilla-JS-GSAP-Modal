@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GSAP Vanilla JS Full Screen Modal</title>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+
+    </head>
+	<style>
+
+	</style>
+<body>
+ <style>
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	main{
+		background-color: gray;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;	
+	}
+	
+/*	Modal overlay styles */
+	.modal-overlay {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: #222;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		visibility: hidden;
+		opacity: 0;
+		transform: matrix(0, 0, 0, 0, 0, 0);
+	}
+	
+/*	Modal close button position and size */		
+	#modal-close {
+		position: absolute;
+		right: 30px;
+		top: 30px;
+		width: 20px;
+		height: auto;
+		cursor: pointer;
+	}
+	
+/*	Modal close button styles */	
+	.close-svg{
+		fill:none;
+		stroke:#FFFFFF;/*Close button colour*/
+		stroke-width:5;
+		stroke-linecap:round;
+		stroke-linejoin:round;
+		stroke-miterlimit:10;
+	}
+	 button {
+		 background-color: #fff;
+		 padding: 10px 20px;
+		 outline: none;
+		 border: none;
+		 font-size: 16px;
+		 text-transform: uppercase;
+	 }
+	 button:hover {
+		 cursor: pointer;
+		 opacity: .8;
+	 }
+</style>       
+<main>
+	
+	<!--Modal open button-->
+	<button id="modal-open">Open Modal</button>	
+	
+	<div class="modal-overlay">
+		
+		<!--Modal close button-->
+		<svg id="modal-close" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 76.5 76.5" style="enable-background:new 0 0 76.5 76.5;" xml:space="preserve"><line class="close-svg" x1="75.5" y1="1" x2="1" y2="75.5"/><line class="close-svg" x1="1" y1="1" x2="75.5" y2="75.5"/>
+		</svg>
+		
+		<!--Modal content goes here-->
+		<div class="modal-content">
+		</div>
+		
+	</div>
+	
+</main>
+	
+
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+<script>
+
+	
+	const modalOpen = document.getElementById('modal-open');
+	const modalClose = document.getElementById('modal-close');
+	
+	modalOpen.addEventListener('click', function(){
+		const tl = new TimelineMax()
+		tl.to('.modal-overlay', .8, { ease: Power4.easeInOut, scale:1, autoAlpha:1});
+	});
+	modalClose.addEventListener('click', function(){
+		const tl = new TimelineMax()
+		tl.to('.modal-overlay', .8, { ease: Power4.easeInOut, scale:0, autoAlpha:0});
+	});
+
+
+</script>
+
+
+	
+</body>
+</html>
+
